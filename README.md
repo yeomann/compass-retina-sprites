@@ -1,5 +1,9 @@
 # Compass-Retina-Sprites
-========================
+
+![alt text](https://lh5.googleusercontent.com/--SIyK0G2Xx0/Uo9gcTfgaeI/AAAAAAAAAwY/38fOKqt4t5w/w500-h284-no/logo.png "Compass-Retina-Sprites- danishraza")
+
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png
+
 
 ## A mixin to create retina sprites with hover & active states
 
