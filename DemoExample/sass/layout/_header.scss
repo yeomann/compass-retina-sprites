@@ -1,0 +1,21 @@
+/* ########################
+    Layout/header
+######################## */
+
+.l-header {
+    
+}
+
+.header-minibar {
+    @include box-shadow(#333 0px 0px 2px);
+    // background: $minibar-color;
+    color: #979797;    
+    padding:3px 0;    
+    position: relative;
+    z-index: 100;
+}   
+
+.header-menubar {
+    // background: $menubar-color;
+    overflow: hidden; //video overflow
+}
