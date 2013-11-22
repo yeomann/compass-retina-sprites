@@ -1,0 +1,28 @@
+/* ########################
+    Module/icons
+######################## */
+
+ $sprites: sprite-map("sprite/*.png", $spacing: 1px); // import normal sprites
+ $sprites2x: sprite-map("sprite2x/*.png", $spacing: 2px); // import 2x sprites
+
+/* Creates the sprite maps and placeholder classes used by the other mixins. */
+@include generate-sprite-map($sprites, $sprites2x, $with-dimensions: true);
+
+/* Allows for pre-defined auto-generated classes. */
+@include retina-sprite-classes($sprites, $sprites2x, $prefix: 'sprite-', $with-dimensions: true);
+
+
+// Custom Css for Specific Sprites
+.sprite-phone {
+    display: inline-block;
+    vertical-align: middle;
+}
+.header-phone-icon {
+    float: left;
+    /* Media Queries*************************/  
+    @include respond-to(ipad-portrait) {
+        text-align: center;
+        float: none;
+        display: block;
+    }
+}

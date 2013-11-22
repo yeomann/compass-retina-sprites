@@ -1,6 +1,6 @@
 # Compass-Retina-Sprites
 
-![alt text](https://lh5.googleusercontent.com/--SIyK0G2Xx0/Uo9gcTfgaeI/AAAAAAAAAwY/38fOKqt4t5w/w500-h284-no/logo.png "Compass-Retina-Sprites- danishraza")
+![alt text](https://lh5.googleusercontent.com/-vfpFIq1cw0w/Uo96k6YurwI/AAAAAAAAAws/kX3uCe7r0hs/w500-h284-no/logo.png "Compass-Retina-Sprites- danishraza")
 
 [logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png
 
@@ -53,7 +53,10 @@ $sprites2x: sprite-map("sprite2x/*.png", $spacing: 2px); // import 2x sprites, 2
 where,
 * $sprites, is the 1x Sprite Folder which means (Normal Folder).
 * $scprites2x, is the 2x Sprite Folder which is Retina Display Icons. 
-* $prefix, is fix word you will be added to every icons of sprite eg:<li><a class="sprite-googleplus" href="https://plus.google.com/u/0/+danishraza">Google+</a></li>
+* $prefix, is fix word you will be added to every icons of sprite eg:
+
+<code>< a class="sprite-googleplus" href="https://plus.google.com/u/0/+danishraza">Google+< /a></code>
+
 * $with-dimensions, represent that dimension for retina icons is corrent, Boolean is required to use for that Option.
 * more option are available on reading mixin file.
 

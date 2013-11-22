@@ -1,0 +1,15 @@
+.social-list {
+    line-height: 100%;
+    @include horizontal-list;
+    li {
+        list-style: none;
+    }
+    a {
+        display: block;
+        @include hide-text;
+    }
+    @include respond-to(ipad-portrait) {
+        display: inline-block;
+        margin-bottom: emCalc(10px);
+    }
+}

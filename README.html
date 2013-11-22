@@ -1,0 +1,181 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body{
+  color:#444;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
+              "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:12px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 1em;
+  outline: 1300px solid #FAFAFA;
+}
+
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+
+span.backtick {
+  border:1px solid #EAEAEA;
+  border-radius:3px;
+  background:#F8F8F8;
+  padding:0 3px 0 3px;
+}
+
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+
+p{
+margin:1em 0;
+}
+
+img{
+max-width:100%;
+}
+
+h1,h2,h3,h4,h5,h6{
+font-weight:normal;
+color:#111;
+line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; border-bottom:1px solid silver; padding-bottom: 5px; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+
+blockquote{
+color:#666666;
+margin:0;
+padding-left: 3em;
+border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+
+
+pre , code, kbd, samp { 
+  color: #000; 
+  font-family: monospace; 
+  font-size: 0.88em; 
+  border-radius:3px;
+  background-color: #F8F8F8;
+  border: 1px solid #CCC; 
+}
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 5px 12px;}
+pre code { border: 0px !important; padding: 0;}
+code { padding: 0 3px 0 3px; }
+
+b, strong { font-weight: bold; }
+
+dfn { font-style: italic; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+@media only screen and (min-width: 480px) {
+body{font-size:14px;}
+}
+
+@media only screen and (min-width: 768px) {
+body{font-size:16px;}
+}
+
+@media print {
+  * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+  body{font-size:12pt; max-width:100%; outline:none;}
+  a, a:visited { text-decoration: underline; }
+  hr { height: 1px; border:0; border-bottom:1px solid black; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page :left { margin: 15mm 20mm 15mm 10mm; }
+  @page :right { margin: 15mm 10mm 15mm 20mm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+</style><title>README</title></head><body><h1 id="compass-retina-sprites">Compass-Retina-Sprites</h1>
+<p><img alt="alt text" src="https://lh5.googleusercontent.com/-vfpFIq1cw0w/Uo96k6YurwI/AAAAAAAAAws/kX3uCe7r0hs/w500-h284-no/logo.png" title="Compass-Retina-Sprites- danishraza" /></p>
+<h2 id="a-mixin-to-create-retina-sprites-with-hover-active-states">A mixin to create retina sprites with hover &amp; active states</h2>
+<p>While building <a href="http://havuz.neu.edu.tr">Swimming website</a>, I came across the need to use compass sprites with hover states on normal and retina devices. Not being able to find anything that would suite my needs, I forked a gist from <a href="https://gist.github.com/2140082">this Gist</a> and added hover &amp; active parameters. Big thanks to <a href="https://github.com/thulstrup">thulstrup</a> and  <a href="https://github.com/rstacruz">rstacruz</a>!</p>
+<p>I created a drop in utility mixin to allow compass to automatically create sprites for normal and retina devices, and also providing hover and active states.</p>
+<h3 id="features">Features</h3>
+<ul>
+<li>Generate Normal &amp; Retina Sprites</li>
+<li>Optional Hover &amp; Active States</li>
+<li>Optional Sprite Spacing/Padding</li>
+</ul>
+<p>There is Demo Example included in demo folder with working sample socil icons example.</p>
+<h2 id="instructions">Instructions</h2>
+<ul>
+<li>Drop __RetinaSprites.scss into your location in sass folder </li>
+<li>Now, link that file in your main file, @import "<strong>YOURFOLDERNAME</strong>/retina-sprites"; eg. styles.scss</li>
+<li>Both files are provided before demo folder</li>
+<li>SASS settings is Setup.Now let's Create two folders in your images folder. For my example I've created "sprites" for 1x sprites and "sprites2x" for 2x sprites. In my example you can see that Compass/Sass is creating both Sprites in main images folder. Drop your photo's in these folders, </li>
+</ul>
+<h2 id="remember">Remember!!</h2>
+<ul>
+<li><strong>They should have the same file name</strong>.</li>
+<li><strong>Also make sure the retina images are divisible by 4</strong>. If they are not, it can lead to problem like clipping and shifting.</li>
+</ul>
+<p>In your SCSS file, declare where your sprites are located. In this example I have my social icons in a separate scss file, and I place the following in the top of this file.</p>
+<pre><code>$sprites: sprite-map("sprite/*.png", $spacing: 1px); // import normal sprites
+$sprites2x: sprite-map("sprite2x/*.png", $spacing: 2px); // import 2x sprites
+</code></pre>
+<p>If you would like to add padding to your sprites, use the spacing parameter and double the value for the retina version:</p>
+<p>$sprites: sprite-map("sprite/<em>.png", $spacing: 1px); // import normal sprites, 1px padding space
+$sprites2x: sprite-map("sprite2x/</em>.png", $spacing: 2px); // import 2x sprites, 2px padding space </p>
+<h2 id="advance-options">Advance Options</h2>
+<p>/<em> Creates the sprite maps and placeholder classes used by the other mixins. </em>/
+@include generate-sprite-map($sprites, $sprites2x, $with-dimensions: true);</p>
+<p>/<em> Allows for pre-defined auto-generated classes. </em>/
+@include retina-sprite-classes($sprites, $sprites2x, $prefix: 'sprite-', $with-dimensions: true);</p>
+<p>where,
+<em> $sprites, is the 1x Sprite Folder which means (Normal Folder).
+</em> $scprites2x, is the 2x Sprite Folder which is Retina Display Icons. 
+* $prefix, is fix word you will be added to every icons of sprite eg:</p>
+<p><code>&lt; a class="sprite-googleplus" href="https://plus.google.com/u/0/+danishraza"&gt;Google+&lt; /a&gt;</code></p>
+<ul>
+<li>$with-dimensions, represent that dimension for retina icons is corrent, Boolean is required to use for that Option.</li>
+<li>more option are available on reading mixin file.</li>
+</ul>
+<p>Almost ready to rock and roll!! Create a class for your sprite, and use an include to generate it.</p>
+<pre><code>.myHoverActiveButton {
+    @include retina-sprite(signIn, $hover: true, $active: true);    // imports signIn.png, signIn_hover.png, and signIn_active.png
+}
+
+.myHoverButton {
+   @include retina-sprite(signIn, $hover: true);                    // imports signIn.png and signIn_hover.png
+}
+
+.myBoringButton {
+   @include retina-sprite(signIn);                                  // imports signIn.png
+}
+</code></pre>
+<p><a href="http://githalytics.com/AdamBrodzinski/Retina-Sprites-for-Compass"><img alt="githalytics.com alpha" src="https://cruel-carlota.pagodabox.com/9c03052a2c62c8153c13242efe0f6d2a" title="githalytics.com" /></a></p></body></html>

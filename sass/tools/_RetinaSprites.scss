@@ -1,0 +1,244 @@
+/* Compass/Sass Retinna Sprite Mixin
+ * @Author Danish Raza
+ * @Descriptio Easy Way to have sprites for any device
+ * @Feature Extensive 2x sprite Supports
+*/
+
+$retina-pixel-ratio: 2 !default;
+
+// Pixel Ratio Mixin
+// Calulates the appropriate pixel ratios based on submitted argument.
+// One argument accepted:
+// $ratio: Supported ratios are 1.3, 1.5 and 2.
+@mixin retina-ratio($ratio: $retina-pixel-ratio) {
+  $dpi: $ratio * 96;
+  $opera-ratio: '';
+  @if $ratio == 2 {
+    $opera-ratio: '2/1';
+  } @else if $retina-pixel-ratio == 1.5 {
+    $opera-ratio: '3/2';
+  } @else if $retina-pixel-ratio == 1.3 {
+    $opera-ratio: '13/10';
+  } @else {
+    @debug "Supported ratios are 1.3, 1.5 and 2"
+  }
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: #{$ratio}),
+  only screen and (   min--moz-device-pixel-ratio: #{$ratio}),
+  only screen and (     -o-min-device-pixel-ratio: #{$opera-ratio}),
+  only screen and (        min-device-pixel-ratio: #{$ratio}),
+  only screen and (                min-resolution: #{$dpi}dpi),
+  only screen and (                min-resolution: #{$ratio}dppx) {
+    @content;
+  }
+}
+
+@function largest-sprite-size($sprite-type, $sprite-dimension) {
+  $all-items: sprite-names($sprite-type);
+  $sprite-map: $sprite-type;
+
+  $size: '';
+  @each $sprite in $all-items{
+    // Loop through sprites for Height/Width
+    $sprite-file: sprite-file($sprite-map, $sprite);
+    // Put the height/width of the image in
+    @if $sprite-dimension == 'width' {
+      $size: image-width($sprite-file);
+      
+    }
+    @elseif $sprite-dimension == 'height' {
+      $size: image-height($sprite-file);
+    }
+  }
+
+  @return max($size);
+}
+
+// Sprite-map Generator Generates the Sprite and creates placeholders
+//
+// Create your vars just as you would a standard sprite and pass the vars in.
+//
+// Three arguments accepted:
+// $sprites-normal: Sprite Path and optional spacing and background size.
+// $sprites-retina: Same as above.
+// $device-pixel-ratio: Choose a value of 1.3, 1.5 or 2, defaults to 2.
+// $base-class: Optionally add a base class to add to the base declaration, defaults to false.
+@mixin generate-sprite-map($sprites-normal, $sprites-retina: false, $device-pixel-ratio: $retina-pixel-ratio, $with-dimensions: true, $padding: 0, $base-class: false) {
+
+
+  // Assign a Placeholder Selector that can be Extended
+  %#{sprite-map-name($sprites-normal)}-image-map {
+    background: {
+      image: $sprites-normal;
+      repeat: no-repeat;
+    }
+    @if $with-dimensions {
+      $width: largest-sprite-size($sprites-normal, 'width');
+      $height: largest-sprite-size($sprites-normal, 'height');
+      width: #{$width};
+      height: #{$height};
+    }
+    @if $padding > 0 {
+      padding: $padding;
+    }
+  }
+
+  @if $base-class {
+      $base-class: "#{$base-class}";
+    } @else {
+      $base-class: "%#{sprite-map-name($sprites-normal)}";
+    }
+
+  #{$base-class} {
+    @extend %#{sprite-map-name($sprites-normal)}-image-map !optional;
+  }
+
+  @if $sprites-retina {
+    // Assign a Placeholder Selector that can be Extended
+    %#{sprite-map-name($sprites-retina)}-image-retina-map {
+      @include retina-ratio($device-pixel-ratio) {
+        background: {
+          image: $sprites-retina;
+          repeat: no-repeat;
+        }
+        $width: ceil(image-width(sprite-path($sprites-retina)) / 2);
+        $height: floor(image-height(sprite-path($sprites-retina)) / 2);
+        @include background-size($width $height);
+      }
+    }
+
+    #{$base-class} {
+      @extend %#{sprite-map-name($sprites-retina)}-image-retina-map !optional;
+    }
+
+  }
+
+}
+
+// Retina Sprite adds position and dimensions of the sprite(s).
+//
+// Either a single sprite path can be passed, or if multiple paths are passed
+// the retina sprite dimensions and positioning are output. Placeholder selectors
+// from the generate-sprite-map functions are included to add the selector to the image
+// path in your stylesheet, this keeps things DRY. Pass in the same path variables set up
+// the generate-sprite-map mixin.
+//
+// Eight arguments accepted:
+// $sprite: The actual name of the image file you want to use.
+// $sprites-normal: Sprite Path and optional spacing and background size.
+// $sprites-retina: Same as above.
+// $padding: Padding around the sprite, be sure to adjust sprite-map spacing if used.
+// $offset-x: Positioning of Sprite on the x-axis.
+// $offset-y: Positioning of Sprite on the y-axis.
+// $device-pixel-ratio: Choose a value of 1.3, 1.5 or 2, defaults to 2.
+// $with-dimensions: Boolean true/false if you want dimensions output, defaults to true.
+// $classes-to-base: Optionally extend the generated class names to the base declaration, defaults to true.
+@mixin retina-sprite-item(
+  $sprite,
+  $sprites-normal,
+  $sprites-retina: false,
+  $padding: 0,
+  $offset-x: 0,
+  $offset-y: 0,
+  $with-dimensions: false,
+  $device-pixel-ratio: $retina-pixel-ratio,
+  $classes-to-base: true,
+  $hover: true,
+  $active: true )
+  {
+  $sprite-map: $sprites-normal;
+  $retina-sprite-map: $sprites-retina;
+
+  @if $with-dimensions {
+    // Get Sprite File for Height/Width
+    $sprite-file: sprite-file($sprite-map, $sprite);
+
+    // Put the height/width of the image in
+    width: image-width($sprite-file);
+    height: image-height($sprite-file);
+  }
+
+  @if $padding > 0 {
+    padding: $padding;
+  }
+
+  @if $classes-to-base {
+    @extend %#{sprite-map-name($sprite-map)}-image-map !optional;
+  }
+
+  // Call the Sprite'd image's position.
+  background-position: sprite-position($sprite-map, $sprite, $offset-x, $offset-y);
+
+  @if $hover {
+    @if sprite_has_selector($sprites-normal, $sprite, hover) {
+      $sprite_hover: $sprite + _hover;
+      &:hover{
+        background-position: sprite-position($sprite-map, $sprite_hover, $offset-x, $offset-y);
+      }
+    }
+  }
+  @if $active {
+    @if sprite_has_selector($sprites-normal, $sprite, active) {
+      $sprite_active: $sprite + _active;
+      &:active{
+        background-position: sprite-position($sprite-map, $sprite_active, $offset-x, $offset-y);
+      }
+    }
+  }
+
+  @if $sprites-retina {
+    @if $classes-to-base {
+      @extend %#{sprite-map-name($sprites-retina)}-image-retina-map !optional;
+    }
+    @include retina-ratio($device-pixel-ratio) {
+      // Both sprite maps are rarely the same order, this safeguards against incorrect background placement.
+      @if (nth(sprite-position($retina-sprite-map, $sprite),2) != 2*nth(sprite-position($sprite-map, $sprite),2) ) {
+        $posy: sprite-position($retina-sprite-map, $sprite, 0, 2*$offset-y);
+        background-position: $offset-x round(nth($posy, 2)/ 2);
+      }
+      @if sprite_has_selector($sprites-retina, $sprite, hover) {
+        $sprite_hover: $sprite + _hover;
+        &:hover{
+          $posy: sprite-position($retina-sprite-map, $sprite_hover, 0, 2*$offset-y);
+          background-position: $offset-x round(nth($posy, 2)/ 2);
+        }
+      }
+      @if sprite_has_selector($sprites-retina, $sprite, active) {
+        $sprite_active: $sprite + _active;
+        &:active{
+          $posy: sprite-position($retina-sprite-map, $sprite_active, 0, 2*$offset-y);
+          background-position: $offset-x round(nth($posy, 2)/ 2);
+        }
+      }
+    }
+  }
+
+}
+
+// Retina Sprite Classes creates a class for every sprite passed.
+//
+// The 1x sprite names are passed to create selectors for both 1x and 2x sprites.
+//
+// Nine arguments accepted:
+// $sprite: The actual name of the image file you want to use.
+// $sprites-normal: Sprite Path and optional spacing and background size.
+// $sprites-retina: Same as above.
+// $padding: Padding around the sprite, be sure to adjust sprite-map spacing if used.
+// $offset-x: Positioning of Sprite on the x-axis.
+// $offset-y: Positioning of Sprite on the y-axis.
+// $device-pixel-ratio: Choose a value of 1.3, 1.5 or 2, defaults to 2.
+// $with-dimensions: Boolean true/false if you want dimensions output, defaults to true.
+// $prefix: Optionally add a prefix to generated class names, defaults to no prefix.
+// $classes-to-base: Optionally extend the generated class names to the base declaration, defaults to true.
+@mixin retina-sprite-classes($sprites-normal, $sprites-retina: false, $padding: 0, $offset-x: 0, $offset-y: 0, $with-dimensions: false, $device-pixel-ratio: $retina-pixel-ratio, $prefix: '', $classes-to-base: true) {
+    $all-items: sprite-names($sprites-normal);
+    @each $sprite in $all-items{
+    @if sprite_does_not_have_parent($sprites-normal, $sprite) {
+      $full-sprite-name: "#{$prefix}#{$sprite}";
+      .#{$full-sprite-name} {
+        @include retina-sprite-item
+  ($sprite, $sprites-normal, $sprites-retina, $padding, $offset-x, $offset-y, $with-dimensions, $retina-pixel-ratio, $classes-to-base);
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+/*  
+	Description: Retine Sprites For Compass
+	Author: Danish Raza
+	Author URI: http://danishraza.info
+*/
+
+
+/* Base */
+@import "base/normalize";/* by zurb foundation*/
+
+// Global Foundation Settings
+// @import "foundation";
+@import "foundation/components/global"; // css global mixins			 | http://foundation.zurb.com/docs/components/global.html
+@import "foundation/components/grid"; // layout grid system 			 | http://foundation.zurb.com/docs/components/grid.html
+
+
+/*Mian Compass file for pre-definded function*/
+@import "compass";
+
+/* Tools */
+@import "tools/RetinaSprites";
+@import "tools/mixin";
+
+/* Layouts */
+@import "layout/header";
+@import "layout/content";
+
+/* Modules */
+@import "module/icons";
+@import "module/social";
+
