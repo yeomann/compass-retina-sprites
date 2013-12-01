@@ -61,18 +61,15 @@ where,
 * more option are available on reading mixin file.
 
 Almost ready to rock and roll!! Create a class for your sprite, and use an include to generate it.
- 	
-	.myHoverActiveButton {
-		@include retina-sprite(signIn, $hover: true, $active: true);    // imports signIn.png, signIn_hover.png, and signIn_active.png
-	}
 
-    .myHoverButton {
-	   @include retina-sprite(signIn, $hover: true);                    // imports signIn.png and signIn_hover.png
-    }
+dd	 $sprites: sprite-map("sprite/*.png", $spacing: 1px); // import normal sprites
+	 $sprites2x: sprite-map("sprite2x/*.png", $spacing: 2px); // import 2x sprites
 
-    .myBoringButton {
-       @include retina-sprite(signIn);                                  // imports signIn.png
-    }
+	/* Creates the sprite maps and placeholder classes used by the other mixins. */
+	@include generate-sprite-map($sprites, $sprites2x, $with-dimensions: true);
+
+	/* Allows for pre-defined auto-generated classes. */
+	@include retina-sprite-classes($sprites, $sprites2x, $prefix: 'sprite-', $with-dimensions: true);
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/9c03052a2c62c8153c13242efe0f6d2a "githalytics.com")](http://githalytics.com/AdamBrodzinski/Retina-Sprites-for-Compass)
 
