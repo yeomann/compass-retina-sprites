@@ -7,7 +7,7 @@
 
 ## A mixin to create retina sprites with hover & active states
 
-While building [Swimming website](http://havuz.neu.edu.tr), I came across the need to use compass sprites with hover states on normal and retina devices. Not being able to find anything that would suite my needs, I forked a gist from [this Gist](https://gist.github.com/2140082) and added hover & active parameters. Big thanks to [thulstrup](https://github.com/thulstrup) and  [rstacruz](https://github.com/rstacruz)!
+While building [Swimming website](http://havuz.neu.edu.tr), I came across the need to use compass sprites with hover states on normal and retina devices. Not being able to find anything that would suite my needs, I forked a gist from [this Gist](https://gist.github.com/2140082) and added hover & active parameters.
 
 I created a drop in utility mixin to allow compass to automatically create sprites for normal and retina devices, and also providing hover and active states.
 
@@ -55,21 +55,20 @@ where,
 * $scprites2x, is the 2x Sprite Folder which is Retina Display Icons. 
 * $prefix, is fix word you will be added to every icons of sprite eg:
 
-<code>< a class="sprite-googleplus" href="https://plus.google.com/u/0/+danishraza">Google+< /a></code>
+<code>< a class="sprite-googleplus" href="https://plus.google.com/u/0/+danishraza">< /a></code>
 
 * $with-dimensions, represent that dimension for retina icons is corrent, Boolean is required to use for that Option.
 * more option are available on reading mixin file.
 
 Almost ready to rock and roll!! Create a class for your sprite, and use an include to generate it.
 
-dd	 $sprites: sprite-map("sprite/*.png", $spacing: 1px); // import normal sprites
+	 $sprites: sprite-map("sprite/*.png", $spacing: 1px); // import normal sprites
 	 $sprites2x: sprite-map("sprite2x/*.png", $spacing: 2px); // import 2x sprites
-
 	/* Creates the sprite maps and placeholder classes used by the other mixins. */
 	@include generate-sprite-map($sprites, $sprites2x, $with-dimensions: true);
-
 	/* Allows for pre-defined auto-generated classes. */
 	@include retina-sprite-classes($sprites, $sprites2x, $prefix: 'sprite-', $with-dimensions: true);
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/9c03052a2c62c8153c13242efe0f6d2a "githalytics.com")](http://githalytics.com/AdamBrodzinski/Retina-Sprites-for-Compass)
 
+and if you find it usefull please follow and fork it. give it star by showing your respect.Drop Me any question if you would like hear. Chear Thanks :)
