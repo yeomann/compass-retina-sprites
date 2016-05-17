@@ -7,9 +7,9 @@
 
 ## A mixin to create retina sprites with hover & active states
 
-While building [Swimming website](http://havuz.neu.edu.tr), I came across the need to use compass sprites with hover states on normal and retina devices. Not being able to find anything that would suite my needs, I forked a gist from [this Gist](https://gist.github.com/2140082) and added hover & active parameters.
+While building one the site for univeristy, I came across the need to use compass sprites with hover states on normal and retina devices. Not being able to find anything that would suite my needs, I forked a gist from [this Gist](https://gist.github.com/2140082) and added hover & active parameters.
 
-I created a drop in utility mixin to allow compass to automatically create sprites for normal and retina devices, and also providing hover and active states.
+I created a utility mixin to allow compass for automatically generate sprites both for normal and retina devices, along css generation for hover and active states.
 
 ### Features
 
@@ -18,7 +18,7 @@ I created a drop in utility mixin to allow compass to automatically create sprit
 * Optional Sprite Spacing/Padding
 
 
-There is Demo Example included in demo folder with working sample socil icons example.
+Repo contains demo example as well just download and watch the directory using compass watch command in terminal.
 
 ## Instructions
 
