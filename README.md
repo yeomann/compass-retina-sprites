@@ -69,7 +69,7 @@ Almost ready to rock and roll!! Create a class for your sprite, and use an inclu
 	/* Allows for pre-defined auto-generated classes. */
 	@include retina-sprite-classes($sprites, $sprites2x, $prefix: 'sprite-', $with-dimensions: true);
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/9c03052a2c62c8153c13242efe0f6d2a "githalytics.com")](http://githalytics.com/AdamBrodzinski/Retina-Sprites-for-Compass)
+
 
 Hope it will help someone. Thanks for reading.
 Cheers!
