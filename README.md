@@ -71,4 +71,5 @@ Almost ready to rock and roll!! Create a class for your sprite, and use an inclu
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/9c03052a2c62c8153c13242efe0f6d2a "githalytics.com")](http://githalytics.com/AdamBrodzinski/Retina-Sprites-for-Compass)
 
-and if you find it usefull please follow and fork it. give it star by showing your respect.Drop Me any question if you would like hear. Chear Thanks :)
+Hope it will help someone. Thanks for reading.
+Cheers!
