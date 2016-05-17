@@ -71,5 +71,5 @@ Almost ready to rock and roll!! Create a class for your sprite, and use an inclu
 
 
 
-Hope it will help someone. Thanks for reading.
+Hope, This help someone. Thanks for reading.
 Cheers!
